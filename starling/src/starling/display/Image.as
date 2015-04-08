@@ -186,44 +186,44 @@ package starling.display
         
         /** Auto align to pivot from SubTecture XML */
         public function alignToSubTexturePivot():void 
-		{
-			if (mTexture is SubTexture){
-				if (!(mTexture as SubTexture).pivotXfromSubTexture) 
-				{
-					throw new ArgumentError("SubTexture has no pivotX assigned in sprite sheet data file");
-				}else {
-					this.pivotX = (mTexture as SubTexture).pivotXfromSubTexture;
-				}
-				if (!(mTexture as SubTexture).pivotYfromSubTexture) {
-					throw new ArgumentError("SubTexture has no pivotY assigned in sprite sheet data file");
-				}else {
-					this.pivotY = (mTexture as SubTexture).pivotYfromSubTexture;
-				}
-			}else 
+	{
+		if (mTexture is SubTexture){
+			if (!(mTexture as SubTexture).pivotXfromSubTexture) 
 			{
-				throw new ArgumentError("SubTexture pivots are only available with SubTextures");
-			}
-			
-		}
-		
-		/** Get SubTexture pivot X */
-        public function get pivotXfromSubTexture():Number 
-		{
-			if (!(mTexture as SubTexture).pivotXfromSubTexture) {
 				throw new ArgumentError("SubTexture has no pivotX assigned in sprite sheet data file");
 			}else {
-				return (mTexture as SubTexture).pivotXfromSubTexture; 
+				this.pivotX = (mTexture as SubTexture).pivotXfromSubTexture;
 			}
-		}
-		/** Get SubTexture pivot Y */
-        public function get pivotYfromSubTexture():Number 
-		{
 			if (!(mTexture as SubTexture).pivotYfromSubTexture) {
 				throw new ArgumentError("SubTexture has no pivotY assigned in sprite sheet data file");
 			}else {
-				return (mTexture as SubTexture).pivotYfromSubTexture;
+				this.pivotY = (mTexture as SubTexture).pivotYfromSubTexture;
 			}
+		}else 
+		{
+			throw new ArgumentError("SubTexture pivots are only available with SubTextures");
 		}
+		
+	}
+	
+	/** Get SubTexture pivot X */
+        public function get pivotXfromSubTexture():Number 
+	{
+		if (!(mTexture as SubTexture).pivotXfromSubTexture) {
+			throw new ArgumentError("SubTexture has no pivotX assigned in sprite sheet data file");
+		}else {
+			return (mTexture as SubTexture).pivotXfromSubTexture; 
+		}
+	}
+	/** Get SubTexture pivot Y */
+        public function get pivotYfromSubTexture():Number 
+	{
+		if (!(mTexture as SubTexture).pivotYfromSubTexture) {
+			throw new ArgumentError("SubTexture has no pivotY assigned in sprite sheet data file");
+		}else {
+			return (mTexture as SubTexture).pivotYfromSubTexture;
+		}
+	}
         
         
     }
