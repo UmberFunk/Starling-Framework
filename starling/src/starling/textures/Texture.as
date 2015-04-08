@@ -585,5 +585,21 @@ package starling.textures
             else
                 return 4096;
         }
+        
+        
+        
+        /** Throw errors if texture of Image of MovieClip is not SubTexture */
+        public function get pivotXfromSubTexture():Number 
+        {
+            throw new ArgumentError("SubTexture pivots are only available with SubTextures");
+            return;
+        }
+        public function get pivotYfromSubTexture():Number 
+        {
+            throw new ArgumentError("SubTexture pivots are only available with SubTextures");
+            return;
+        }
+        
+        
     }
 }
