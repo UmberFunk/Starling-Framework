@@ -34,6 +34,7 @@ package starling.textures
         private var mWidth:Number;
         private var mHeight:Number;
         private var mTransformationMatrix:Matrix;
+        private var mPivotPoint:Point;
         
         /** Helper object. */
         private static var sTexCoords:Point = new Point();
@@ -53,7 +54,7 @@ package starling.textures
          */
         public function SubTexture(parent:Texture, region:Rectangle=null,
                                    ownsParent:Boolean=false, frame:Rectangle=null,
-                                   rotated:Boolean=false)
+                                   rotated:Boolean=false, pivotPoint:Point=null)
         {
             // TODO: in a future version, the order of arguments of this constructor should
             //       be fixed ('ownsParent' at the very end).
@@ -66,6 +67,7 @@ package starling.textures
             mWidth  = rotated ? mRegion.height : mRegion.width;
             mHeight = rotated ? mRegion.width  : mRegion.height;
             mTransformationMatrix = new Matrix();
+            mPivotPoint = pivotPoint;
             
             if (rotated)
             {
@@ -218,5 +220,11 @@ package starling.textures
         
         /** @inheritDoc */
         public override function get frame():Rectangle { return mFrame; }
+        
+        
+		/** Pivot Getters */
+        public override function get pivotXfromSubTexture():Number { return mPivotPoint.x; }
+		public override function get pivotYfromSubTexture():Number { return mPivotPoint.y; }
+        
     }
 }
