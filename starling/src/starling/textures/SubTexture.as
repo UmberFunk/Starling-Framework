@@ -222,9 +222,9 @@ package starling.textures
         public override function get frame():Rectangle { return mFrame; }
         
         
-		/** Pivot Getters */
+	/** Pivot Getters */
         public override function get pivotXfromSubTexture():Number { return mPivotPoint.x; }
-		public override function get pivotYfromSubTexture():Number { return mPivotPoint.y; }
+	public override function get pivotYfromSubTexture():Number { return mPivotPoint.y; }
         
     }
 }
