@@ -355,5 +355,49 @@ package starling.display
         {
             return !mLoop && mCurrentTime >= totalTime;
         }
+        
+        
+        /** Auto align to pivot from SubTecture XML */
+        public override function alignToSubTexturePivot():void 
+		{
+            if (mTextures[0] is SubTexture){
+                if (!(mTextures[0] as SubTexture).pivotXfromSubTexture) 
+                {
+                    throw new ArgumentError("SubTexture has no pivotX assigned in sprite sheet data file");
+                }else {
+                    this.pivotX = (mTextures[0] as SubTexture).pivotXfromSubTexture;
+                }
+                if (!(mTextures[0] as SubTexture).pivotYfromSubTexture) {
+                    throw new ArgumentError("SubTexture has no pivotY assigned in sprite sheet data file");
+                }else {
+                    this.pivotY = (mTextures[0] as SubTexture).pivotYfromSubTexture;
+                }
+            }else 
+            {
+                throw new ArgumentError("SubTexture pivots are only available with SubTextures");
+            }
+			
+        }
+        
+        /** Get SubTexture pivot X */
+        public override function get pivotXfromSubTexture():Number 
+        {
+            if (!(mTextures[0] as SubTexture).pivotXfromSubTexture) {
+                throw new ArgumentError("SubTexture has no pivotX assigned in sprite sheet data file");
+            }else {
+                return (mTextures[0] as SubTexture).pivotXfromSubTexture; 
+            }
+        }
+        /** Get SubTexture pivot Y */
+        public override function get pivotYfromSubTexture():Number 
+        {
+            if (!(mTextures[0] as SubTexture).pivotYfromSubTexture) {
+                throw new ArgumentError("SubTexture has no pivotY assigned in sprite sheet data file");
+            }else {
+                return (mTextures[0] as SubTexture).pivotYfromSubTexture;
+            }
+        }
+        
+        
     }
 }
