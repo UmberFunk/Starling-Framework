@@ -153,6 +153,7 @@ package starling.display
         private var mIs3D:Boolean;
         private var mMask:DisplayObject;
         private var mIsMask:Boolean;
+        private var mVars:Object;
         
         /** Helper objects. */
         private static var sAncestors:Vector.<DisplayObject> = new <DisplayObject>[];
@@ -999,5 +1000,14 @@ package starling.display
         /** The stage the display object is connected to, or null if it is not connected 
          *  to the stage. */
         public function get stage():Stage { return this.base as Stage; }
+		
+		
+        /** Additional variables */
+        public function get vars():Object { return mVars; }
+        public function set vars(value:Object):void
+        {
+            mVars = value;
+        }
+		
     }
 }
