@@ -592,12 +592,12 @@ package starling.textures
         public function get pivotXfromSubTexture():Number 
         {
             throw new ArgumentError("SubTexture pivots are only available with SubTextures");
-            return;
+            return NaN;
         }
         public function get pivotYfromSubTexture():Number 
         {
             throw new ArgumentError("SubTexture pivots are only available with SubTextures");
-            return;
+            return NaN;
         }
         
         

@@ -13,6 +13,7 @@ package starling.display
     import flash.geom.Rectangle;
     import flash.ui.Mouse;
     import flash.ui.MouseCursor;
+	import starling.textures.SubTexture;
     
     import starling.events.Event;
     import starling.events.Touch;
@@ -435,5 +436,56 @@ package starling.display
          *  @default true */
         public override function get useHandCursor():Boolean { return mUseHandCursor; }
         public override function set useHandCursor(value:Boolean):void { mUseHandCursor = value; }
+		
+		
+		
+		
+		// ** ADDED **
+		
+        /** Auto align to pivot from SubTecture XML */
+        public function alignToSubTexturePivot():void 
+		{
+			if (mUpState is SubTexture){
+				if (isNaN((mUpState as SubTexture).pivotXfromSubTexture)) 
+				{
+					throw new ArgumentError("SubTexture has no pivotX assigned in sprite sheet data file");
+				}else {
+					this.pivotX = (mUpState as SubTexture).pivotXfromSubTexture;
+				}
+				if (isNaN((mUpState as SubTexture).pivotYfromSubTexture)) {
+					throw new ArgumentError("SubTexture has no pivotY assigned in sprite sheet data file");
+				}else {
+					this.pivotY = (mUpState as SubTexture).pivotYfromSubTexture;
+				}
+			}else 
+			{
+				throw new ArgumentError("SubTexture pivots are only available with SubTextures");
+			}
+			
+		}
+		
+		/** Get SubTexture pivot X */
+        public function get pivotXfromSubTexture():Number 
+		{
+			if (isNaN((mUpState as SubTexture).pivotXfromSubTexture)) {
+				throw new ArgumentError("SubTexture has no pivotX assigned in sprite sheet data file");
+			}else {
+				return (mUpState as SubTexture).pivotXfromSubTexture; 
+			}
+		}
+		/** Get SubTexture pivot Y */
+        public function get pivotYfromSubTexture():Number 
+		{
+			if (isNaN((mUpState as SubTexture).pivotYfromSubTexture)) {
+				throw new ArgumentError("SubTexture has no pivotY assigned in sprite sheet data file");
+			}else {
+				return (mUpState as SubTexture).pivotYfromSubTexture;
+			}
+		}
+		// ** ADDED END **
+		
+		
+		
+		
     }
 }

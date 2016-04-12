@@ -10,6 +10,7 @@
 
 package starling.textures
 {
+	import flash.geom.Point;
     import flash.geom.Rectangle;
     import flash.utils.Dictionary;
     
@@ -119,15 +120,18 @@ package starling.textures
                 region.setTo(x, y, width, height);
                 frame.setTo(frameX, frameY, frameWidth, frameHeight);
                 
+				/** ADDED **/
                 /** GET pivot data from xml and create a Point  */
                 var pivotX:Number      = parseFloat(subTexture.@pivotX); 
                 var pivotY:Number      = parseFloat(subTexture.@pivotY);
                 var pivotPoint:Point   = new Point(pivotX, pivotY);
+				/** ADDED END **/
                 
                 if (frameWidth > 0 && frameHeight > 0)
-                    addRegion(name, region, frame, rotated, pivotPoint);  
+                    addRegion(name, region, frame, rotated, pivotPoint);  // ADDED pivotPoint
                 else
-                    addRegion(name, region, null,  rotated, pivotPoint);  
+                    addRegion(name, region, null,  rotated, pivotPoint);  // ADDED pivotPoint
+			}
         }
         
         /** Retrieves a SubTexture by name. Returns <code>null</code> if it is not found. */
@@ -197,9 +201,9 @@ package starling.textures
         /** Adds a named region for a SubTexture (described by rectangle with coordinates in
          *  points) with an optional frame. */
         public function addRegion(name:String, region:Rectangle, frame:Rectangle=null,
-                                  rotated:Boolean=false, pivotPoint:Point=null):void
+                                  rotated:Boolean=false, pivotPoint:Point=null):void  // ADDED pivotPoint
         {
-            mSubTextures[name] = new SubTexture(mAtlasTexture, region, false, frame, rotated, pivotPoint);
+            mSubTextures[name] = new SubTexture(mAtlasTexture, region, false, frame, rotated, pivotPoint);  // ADDED pivotPoint
             mSubTextureNames = null;
         }
         
