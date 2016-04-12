@@ -14,7 +14,6 @@ package starling.display
     import flash.geom.Matrix;
     import flash.geom.Point;
     import flash.geom.Rectangle;
-	import starling.textures.SubTexture;
     
     import starling.core.RenderSupport;
     import starling.textures.Texture;
